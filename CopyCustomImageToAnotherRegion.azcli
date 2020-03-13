@@ -1,0 +1,11 @@
+az extension add --name image-copy-extension
+
+#Copy an image to several regions and cleanup at the end.
+az image copy --source-resource-group mySources-rg --source-object-name myImage \
+    --target-location uksouth northeurope --target-resource-group "images-repo-rg" --cleanup
+
+#Use an already generalized vm to create images in other regions.
+az image copy --source-resource-group mySources-rg --source-object-name myVm \
+    --source-type vm --target-location uksouth northeurope --target-resource-group "images-repo-rg"
+
+az image list --output
