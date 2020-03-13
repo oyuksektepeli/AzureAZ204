@@ -21,7 +21,7 @@ $rg
 
 $subnetConfig = New-AzVirtualNetworkSubnetConfig `
     -Name 'nc-demo-subnet-2' `
-    -AddressPrefix '10.33.2.0/24'
+    -AddressPrefix '10.34.2.0/24'
 
 $subnetConfig
 
@@ -29,7 +29,7 @@ $vnet = New-AzVirtualNetwork `
     -ResourceGroupName $rg.ResourceGroupName `
     -Location $rg.Location `
     -Name 'nc-demo-vnet-2' `
-    -AddressPrefix '10.33.0.0/16' `
+    -AddressPrefix '10.34.0.0/16' `
     -Subnet $subnetConfig
 
 $vnet
