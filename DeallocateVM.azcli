@@ -1,0 +1,7 @@
+#Deallocate Azure VM
+az vm deallocate --resource-group "ResourceGroupName" --name "VMName"
+
+#Check out the status of Azure Virtual Machine
+az vm list --show-details --output table
+
+

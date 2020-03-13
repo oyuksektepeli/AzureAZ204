@@ -1,0 +1,5 @@
+#CreateImage from VM
+az image create --resource-group "ResourceGroupName" --name "ImageName" --source "SourceVMName"
+
+#List images
+az image list --output table

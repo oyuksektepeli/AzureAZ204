@@ -1,0 +1,2 @@
+#Mark the virtual machine as generalized
+az vm generalize --resource-group "RGName" --name "VMName"
