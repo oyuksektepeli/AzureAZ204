@@ -5,7 +5,7 @@ Install-Module -Name Az -AllowClobber -Scope CurrentUser
 Connect-AzAccount
 
 #Get Current Connected Subscription/Context
-Get-AzureRmContext
+Get-AzContext
 
 #Get All Azure Subscriptions
 Get-AzSubscription | more
