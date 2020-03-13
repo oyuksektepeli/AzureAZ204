@@ -3,3 +3,6 @@ az image create --resource-group "ResourceGroupName" --name "ImageName" --source
 
 #List images
 az image list --output table
+
+#delete custom image
+az image delete --resource-group "resource-group-name" --name "image-name"
