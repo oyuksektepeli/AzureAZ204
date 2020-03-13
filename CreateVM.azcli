@@ -65,6 +65,7 @@ az vm create \
     --name "nc-demo-ubuntuvm-01" \
     --nics "nc-demo-ubuntu-nic-01" \
     --image "UbuntuLTS"
+    --admin-username "ncvmadmin" \
     --authentication-type "ssh" \
     --ssh-key-value ~/.ssh/id_rsa.pub
 
