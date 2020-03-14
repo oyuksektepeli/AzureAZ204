@@ -2,7 +2,7 @@
 az login
 
 #If you have more than one subscription, select subscription
-az account set --subscription "Microsoft Azure Sponsorship - MVP"
+az account set --subscription "Visual Studio Premium with MSDN"
 
 #show your current subscription
 az account show 
@@ -14,36 +14,36 @@ az group create --name "nc-demo-rg" --location "westeurope"
 az group list -o table
 
 #Create vnet 
-az network vnet create \
-    --resource-group "nc-demo-rg" \
-    --name "nc-demovnet-01" \
-    --address-prefix "10.33.0.0/16" \
-    --subnet-name "nc-demo-linux-subnet" \
-    --subnet-prefix "10.33.1.0/24"
+az network vnet create `
+--resource-group "nc-demo-rg" `
+--name "nc-demovnet-01" `
+--address-prefix "10.33.0.0/16" `
+--subnet-name "nc-demo-linux-subnet" `
+--subnet-prefix "10.33.1.0/24"
 
 #list vnets
-az network list --output table
+az network vnet list --output table
 
 #create public IP, public IP creation make take a while
-az network public-ip create \
-    --resource-group "nc-demo-rg"
+az network public-ip create `
+    --resource-group "nc-demo-rg" `
     --name "nc-demo-ubuntu01-pip-01"
 
 #create nsg
-az network nsg create \
-    --resource-group "nc-demo-rg" \
+az network nsg create `
+    --resource-group "nc-demo-rg" `
     --name "nc-demo-linuxvm-nsg"
 
 #list nsg
 az network nsg list --output table
 
 #create NIC for VM
-az network nic create \
-    --resource-group "nc-demo-rg" \
-    --name "nc-demo-ubuntu-nic-01" \
-    --vnet-name "nc-demovnet-01" \
-    --subnet "nc-demo-linux-subnet" \
-    --network-security-group "nc-demo-linuxvm-nsg" \
+az network nic create `
+    --resource-group "nc-demo-rg" `
+    --name "nc-demo-ubuntu-nic-01" `
+    --vnet-name "nc-demovnet-01" `
+    --subnet "nc-demo-linux-subnet" `
+    --network-security-group "nc-demo-linuxvm-nsg" `
     --public-ip-address "nc-demo-ubuntu01-pip-01"
 
 #list your nic
@@ -59,29 +59,29 @@ az vm image list --all
 az vm image list -f Ubuntu
 
 #create azure virtual machine
-az vm create \
-    --resource-group "nc-demo-rg" \
-    --location "westeurope" \
-    --name "nc-demo-ubuntuvm-01" \
-    --nics "nc-demo-ubuntu-nic-01" \
-    --image "UbuntuLTS"
-    --admin-username "ncvmadmin" \
-    --authentication-type "ssh" \
-    --ssh-key-value ~/.ssh/id_rsa.pub
+az vm create `
+    --resource-group "nc-demo-rg" `
+    --location "westeurope" `
+    --name "nc-demo-ubuntuvm-01" `
+    --nics "nc-demo-ubuntu-nic-01" `
+    --image "UbuntuLTS" `
+    --admin-username "ncvmadmin" `
+    --authentication-type "ssh" `
+    --ssh-key-value ~/.ssh/vmtest.pub
 
 
 #get help creating azure vm 
 az vm create --help | more
 
 #open port on azure vm 
-az vm open-port \
-    --resource-group "nc-demo-rg" \
-    --name "nc-demo-ubuntuvm-01" \
+az vm open-port `
+    --resource-group "nc-demo-rg" `
+    --name "nc-demo-ubuntuvm-01" `
     --port "22"
 
 #get VM's IPs
 az vm list-ip-addresses --name "nc-demo-ubuntuvm-01" --output table
 
 #connect to azure linux vm
-ssh -l ncvmadmin 10.33.1.4
+ssh -l ncvmadmin 40.114.227.74
 

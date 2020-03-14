@@ -10,6 +10,21 @@ Start-Service sshd
 cd ~\.ssh\
 ssh-keygen
 
+ssh-keygen -m PEM -t rsa -b 4096
+
+#ssh-keygen detailed
+https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/virtual-machines/linux/create-ssh-keys-detailed.md
+
+ssh-keygen \
+    -m PEM \
+    -t rsa \
+    -b 4096 \
+    -C "azureuser@myserver" \
+    -f ~/.ssh/mykeys/myprivatekey \
+    -N mypassphrase
+
+
+
 # Make sure you're running as an Administrator
 Start-Service ssh-agent
 
