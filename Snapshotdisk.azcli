@@ -1,0 +1,33 @@
+#Snapshotting the OS disk
+#1 - Find the disk we want to snapshot and create a snapshot of the disk
+az disk list --output table | grep nc-demo-linux-1c
+
+#update the --source parameter with the disk from the last command.
+az snapshot create \
+    --resource-group "nc-demo-rg" \
+    --source "nc-demo-linux-1c_disk1_9c9f359319204c3a8d1f128685c13d22" \
+    --name "nc-demo-linux-1c-OSDisk-1-snap-1" 
+
+#2 - Getting a list of the snapshots available
+az snapshot list \
+    --output table
+
+#3 - Create a new disk from the snapshot we just created. 
+#If this was a data disk, we could just attach and mount this disk to a VM
+az disk create \
+    --resource-group "nc-demo-rg" \
+    --name "nc-demo-linux-1f-OSDisk-1" \
+    --source "nc-demo-linux-1c-OSDisk-1-snap-1" \
+    --size-gb "40"
+
+#4 - Create a VM from the disk we just created
+az vm create \
+    --resource-group "nc-demo-rg" \
+    --name "nc-demo-linux-1f" \
+    --attach-os-disk "nc-demo-linux-1f-OSDisk-1" \
+    --os-type "Linux"
+
+#5 - If we want we can delete a snapshot when we're finished
+az snapshot delete \
+    --resource-group "nc-demo-rg" \
+    --name "nc-demo-linux-1c-OSDisk-1-snap-1"

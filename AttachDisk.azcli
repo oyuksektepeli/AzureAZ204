@@ -1,0 +1,52 @@
+#login to Azure
+az login --subscription "Visual Studio Premium with MSDN"
+
+#create new disk and attach to VM
+az vm disk attach \
+    --resource-group "nc-demo--rg" \
+    --vm-name "nc-demo-linux-1c" \
+    --disk "nc-demo--linux-1c-st0" \
+    --new \
+    --size-gb 25 \
+    --sku "Premium_LRS" #Other options are StandardSSD_LRS and Standard_LRS
+
+#get vm IP address
+az vm list-ip-addresses \
+    --name "nc-demo-linux-1c" \
+    --output table
+
+ssh -l demoadmin 168.61.222.248
+
+#Find the new block decvice, by default /dev/sda is the OS, and /dev/sdb is the temporary disk.
+#find 25gb net disk
+lsblk
+
+#find scsi devices.
+dmesg | grep SCSI
+
+#partition the disk with fdisk and use the following commands to name a new primary parition
+sudo fdisk /dev/sdc
+m
+n
+p
+1
+w
+
+format the new partition with ext4 
+sudo mkfs -t ext4 /dev/sdc1
+
+#Make a directory to mount the new disk under
+sudo mkdir /data1
+
+#Add the following line to /etc/fstab. First find the UUID for this device, in our case it's /dev/sdc1
+sudo -i blkid | grep sdc1
+
+UUID=7d9f3af0-8927-4c73-aafe-a221e659d109      /data1  ext4   defaults        0 0
+sudo vi /etc/fstab
+
+#mount the volume and verify the file system is mounted.
+sudo mount -a
+df -h
+
+#Exit from the Linux VM
+exit

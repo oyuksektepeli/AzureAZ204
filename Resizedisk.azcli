@@ -1,0 +1,73 @@
+#Resizing a disk
+#1 - Stop and deallocate the VM. this has to be an offline operation.
+az vm deallocate \
+    --resource-group "nc-demo-rg" \
+    --name "nc-demo-linux-1c"
+
+#2 - Find the disk's name we want to expand
+az disk list \
+    --output table
+
+#3 - Update the disk's size to the desired size
+az disk update \
+    --resource-group "nc-demo-rg" \
+    --name "nc-demo-linux-1c-st0" \
+    --size-gb 100
+
+#4 - start up the VM again
+az vm start \
+    --resource-group "nc-demo-rg" \
+    --name "nc-demo-linux-1c" 
+
+#5 - Log into the guest OS and resize the volume
+az vm list-ip-addresses \
+    --name "nc-demo-linux-1c" \
+    --output table
+
+ssh -l demoadmin 40.122.37.234
+
+#6 - Unmount filesystem and expand the partition
+sudo vi /etc/fstab #comment out our mount
+
+sudo umount /data1
+sudo parted /dev/sdc
+
+#use print to find the size of the new disk, parition 1, resize, set the size to 107, quit
+print 
+resizepart
+1
+107GB
+quit
+
+#If the resizepart option isn't available update the parted package.
+
+#7 - fsck, expand and mount the filesystem
+sudo e2fsck -f /dev/sdc1
+sudo resize2fs /dev/sdc1
+sudo mount /dev/sdc1 /data1
+sudo vi /etc/fstab
+sudo mount -a
+
+#8 - Verify the added space is available
+df -h  | grep data1
+
+
+#Removing a disk 
+#1 - Umount the disk in the OS, remove the disk we added above from fstab
+ssh -l demoadmin w.x.y.z
+sudo vi /etc/fstab
+sudo umount /data1
+df -h | grep /data1
+exit
+
+#2 - Detaching the disk from the virtual machine. This can be done online too!
+az vm disk detach \
+    --resource-group "nc-demo-rg" \
+    --vm-name "nc-demo-linux-1c" \
+    --name "nc-demo-linux-1c-st0"
+
+#3 - Delete the disk
+az disk delete \
+    --resource-group "nc-demo-rg" \
+    --name "nc-demo-linux-1c-st0" 
+
