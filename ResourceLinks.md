@@ -41,3 +41,12 @@ https://docs.microsoft.com/en-us/azure/app-service/samples-cli
 
 **Get started with the Azure WebJobs SDK for event-driven background processing**
 https://docs.microsoft.com/en-us/azure/app-service/webjobs-sdk-get-started
+
+**Azure Functions Core Tools**
+https://github.com/Azure/azure-functions-core-tools
+
+**NodeJS Download**
+https://nodejs.org/en/download/
+
+**Installing Chocolatey**
+https://chocolatey.org/docs/installation
