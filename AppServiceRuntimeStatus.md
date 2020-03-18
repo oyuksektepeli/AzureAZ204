@@ -8,9 +8,7 @@ https://%3Cappname%3E.scm.azureweb-sites.net/Env.cshtml
  https://<appname>.scm.azurewebsites.net/DebugConsole
 
  **Run the pollowing command in the command promp**
-powershell
--command "gci 'Registry::HKEY_LOCAL_
-MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"
+powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"
 
 **.Net Core Version**
  https://<appname>.scm.azurewebsites.net/DebugConsole
