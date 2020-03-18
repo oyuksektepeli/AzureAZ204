@@ -29,3 +29,15 @@ http://www.azurespeed.com/
 
 **Azure Virtual Machine Series**\
 https://azure.microsoft.com/en-us/pricing/details/virtual-machines/series/
+
+**App Service Plans**
+https://azure.microsoft.com/tr-tr/pricing/details/app-service/plans/
+
+**App Service Pricing**
+https://azure.microsoft.com/en-us/pricing/details/app-service/windows/
+
+**CLI samples for Azure App Service**
+https://docs.microsoft.com/en-us/azure/app-service/samples-cli
+
+**Get started with the Azure WebJobs SDK for event-driven background processing**
+https://docs.microsoft.com/en-us/azure/app-service/webjobs-sdk-get-started
