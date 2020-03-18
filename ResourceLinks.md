@@ -50,3 +50,6 @@ https://nodejs.org/en/download/
 
 **Installing Chocolatey**
 https://chocolatey.org/docs/installation
+
+**API Manager**
+https://www.postman.com/downloads/
