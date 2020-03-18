@@ -53,3 +53,6 @@ https://chocolatey.org/docs/installation
 
 **API Manager**
 https://www.postman.com/downloads/
+
+**Azure Functions Trigger and Bindings**
+https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings
