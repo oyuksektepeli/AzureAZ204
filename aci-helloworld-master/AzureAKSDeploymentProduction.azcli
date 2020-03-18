@@ -1,0 +1,40 @@
+az network vnet subnet list --resource-group "nc-network-rg" --vnet-name "nc-aks-vnet" --query [].id --output tsv
+/subscriptions/7fd89b16-0998-418f-ac17-236f38d101bc/resourceGroups/nc-network-rg/providers/Microsoft.Network/virtualNetworks/nc-aks-vnet/subnets/kube-cluster-subnet
+
+az ad sp create-for-rbac --skip-assignment
+
+{
+  "appId": "0cdb41fd-74c1-4fe2-873b-cd57ec8db219",
+  "displayName": "azure-cli-2017-05-33-18-16-50",
+  "name": "http://azure-cli-2017-05-33-18-16-50",
+  "password": "0f195503-b4c1-4e20-929f-cf09230ee557",
+  "tenant": "5b3d9082-7998-48fc-afc8-14aa4bd94e18"
+}
+
+
+az aks create --resource-group "nc-aks-rg" --name "ncaks" --network-plugin azure --vnet-subnet-id "/subscriptions/7fd89b16-0668-418f-ac17-233f38d101bc/resourceGroups/nc-network-rg/providers/Microsoft.Network/virtualNetworks/nc-aks-vnet/subnets/kube-cluster-subnet" --docker-bridge-address 172.17.0.1/16 --dns-service-ip 10.233.128.10 --service-cidr 10.233.128.0/17  --max-pods 100 --location westeurope --vm-set-type VirtualMachineScaleSets --load-balancer-sku standard --enable-cluster-autoscaler  --min-count 1 --max-count 3   --kubernetes-version "1.14.7" --service-principal "0cdb41fd-33c1-4fe2-873b-cd57ec8db333" --client-secret "0f333303-b4c1-4e20-929f-cf09230ee333" --node-osdisk-size 128 --generate-ssh-keys
+
+az aks show --resource-group "nc-aks-rg" --name "ncaks" --query "servicePrincipalProfile.clientId" --output tsv
+0cdb33fd-74c1-4fe2-333b-cd57ec8db333
+
+az acr show --name yuksektek --resource-group "nc-containers-rg" --query "id" --output tsv
+
+
+az role assignment create --assignee 0cdb33fd-74c1-4fe2-333b-cd57ec8db333 --role acrpull --scope "/subscriptions/7fd89b16-0998-418f-ac17-236f38d333bc/resourceGroups/nc-containers-rg/providers/Microsoft.ContainerRegistry/registries/yuksektek"
+
+kubectl apply -f .\namespace.yaml
+kubectl apply -f .\tillerrbac.yaml
+helm init --history-max 500 --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
+
+
+az aks update \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --update-cluster-autoscaler \
+  --min-count 1 \
+  --max-count 5
+
+az aks update \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --disable-cluster-autoscaler

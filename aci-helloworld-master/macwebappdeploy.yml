@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: macwebapp-deployment
+  labels:
+    app: macwebapp
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: macwebapp
+      labels:
+        app: macwebapp
+    spec:
+      containers:
+      - name: macwebapp
+        image: macacr01.azurecr.io/macwebapp:v1
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: macwebapp
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: macwebapp-service
+spec:
+  selector:
+    app: macwebapp
+  ports:
+    - port: 80
+  type: LoadBalancer
+  
+  

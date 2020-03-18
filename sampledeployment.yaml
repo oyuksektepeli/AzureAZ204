@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blazordemo-deployment
+  labels:
+    app: blazordemo
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: blazordemo
+      labels:
+        app: blazordemo
+    spec:
+      containers:
+      - name: blazordemo
+        image: yuksektek.azurecr.io/oyuksektepeli/blazordemo:latest
+        imagePullPolicy: Always
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: blazordemo
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: blazordemo-service
+spec:
+  selector:
+    app: blazor
+  ports:
+    - port: 80
+  type: LoadBalancer
+  
