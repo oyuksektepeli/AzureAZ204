@@ -1,0 +1,1 @@
+MobileAppsManagement_EXTENSION_VERSION=latest
