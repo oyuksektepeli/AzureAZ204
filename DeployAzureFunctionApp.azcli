@@ -1,0 +1,1 @@
+az functionapp deployment source config -g "Resource-group-name" -n functionname -src function1.zip
