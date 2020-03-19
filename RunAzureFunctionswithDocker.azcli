@@ -1,0 +1,24 @@
+#check the Create Dockerfile for Azure Functions file to create dockerfile
+
+#build your docker image
+docker build -t serverless:v1 .
+
+#run container from image
+docker run serverless:v1
+
+#you will see error because we dont have azure storage account attached
+
+#login to azure
+az login 
+
+#set your subscription if needed
+az account set --subscription "subscription-name"
+
+#get existing storage azure storage account
+$storageaccount = az storage account show-connection-string -g resource-group-name -n function-name -o tsv
+
+#run docker container again with environment variable
+docker run -e AzureWebJobsStorage=$storageaccount -p 8080:80
+
+
+

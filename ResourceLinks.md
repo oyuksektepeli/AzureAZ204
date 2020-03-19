@@ -65,4 +65,6 @@ https://hub.docker.com/_/microsoft-azure-functions-dotnet
 **KEDA - Kubernetes Event-Driven Autoscaling**
 https://keda.sh
 
+**Azure Functions on Docker Container**
+https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-linux-custom-image?tabs=portal%2Cbash&pivots=programming-language-csharp
 
