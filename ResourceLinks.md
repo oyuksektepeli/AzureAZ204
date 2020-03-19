@@ -62,3 +62,7 @@ https://hub.docker.com/_/microsoft-azure-functions-base
 https://hub.docker.com/_/microsoft-azure-functions-dotnet
 
 
+**KEDA - Kubernetes Event-Driven Autoscaling**
+https://keda.sh
+
+
