@@ -56,3 +56,9 @@ https://www.postman.com/downloads/
 
 **Azure Functions Trigger and Bindings**
 https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings
+
+**Azure Functions Docker Hub Containers**
+https://hub.docker.com/_/microsoft-azure-functions-base
+https://hub.docker.com/_/microsoft-azure-functions-dotnet
+
+
