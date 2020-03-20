@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: blazordemo-deployment
+  name: hello-world
   labels:
-    app: blazordemo
+    app: hello-world
 spec:
   replicas: 3
   template:
     metadata:
-      name: blazordemo
+      name: hello-world
       labels:
-        app: blazordemo
+        app: hello-world
     spec:
       containers:
-      - name: blazordemo
-        image: yuksektek.azurecr.io/oyuksektepeli/blazordemo:latest
+      - name: hello-world
+        image: hello-world
         imagePullPolicy: Always
       restartPolicy: Always
   selector:
     matchLabels:
-      app: blazordemo
+      app: hello-world
 
 
 ---
@@ -27,10 +27,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: blazordemo-service
+  name: hello-world
 spec:
   selector:
-    app: blazor
+    app: hello-world
   ports:
     - port: 80
   type: LoadBalancer
