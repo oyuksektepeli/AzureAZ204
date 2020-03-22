@@ -71,3 +71,5 @@ https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function
 **Microsoft Calculator API**
 http://calcapi.cloudapp.net/
 
+**Azure Cosmos DB Capacity Calculator**
+https://cosmos.azure.com/capacitycalculator/
