@@ -1,0 +1,18 @@
+{
+    "familyName": "Yuksektepeli",
+    "address": {
+        "addressLine": "Kartal Istanbul",
+        "city": "Istanbul",
+        "state": "IST",
+        "zipCode": "34000"
+    },
+    "parents": [
+        "Onur",
+        "Canan"
+    ],
+    "kids": [
+        "Giray",
+        "Neva",
+        "Elvin"
+    ]
+}

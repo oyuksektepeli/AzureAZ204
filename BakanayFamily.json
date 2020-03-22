@@ -1,0 +1,18 @@
+{
+    "familyName": "Bakanay",
+    "address": {
+        "addressLine": "123 Karsiyaka",
+        "city": "Izmir",
+        "state": "IZM",
+        "zipCode": "35000"
+    },
+    "parents": [
+        "Ali",
+        "Tugce"
+    ],
+    "kids": [
+        "Deniz",
+        "Ece"
+        
+    ]
+}
