@@ -2,7 +2,7 @@
 
 Exam AZ-203: Developing Solutions for Microsoft Azure
 
-- M01: Implement solutions that use virtual machines (VMs) 
+-M01: Implement solutions that use virtual machines (VMs) 
  -L01: Provision VMs
  -L02: Configure VMs
  -L03: Create Azure Resource Manager templates
