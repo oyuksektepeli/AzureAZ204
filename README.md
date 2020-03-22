@@ -2,7 +2,7 @@
 
 
 # AzureAZ203
-## # Azure For Developers
+## Azure For Developers
 
 Exam AZ 203: Developing Solutions for Microsoft Azure
 
