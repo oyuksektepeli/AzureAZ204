@@ -1,9 +1,9 @@
  ![alt text](https://user-images.githubusercontent.com/11184353/55832309-f4c15180-5b1d-11e9-93ce-136e2711bf8f.png)
 
- 
+
 # AzureAZ203
 
-Exam AZ* 203: Developing Solutions for Microsoft Azure
+Exam AZ 203: Developing Solutions for Microsoft Azure
 
 * M01: Implement solutions that use virtual machines (VMs) 
     * L01: Provision VMs
