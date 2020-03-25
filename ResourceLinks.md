@@ -73,3 +73,6 @@ http://calcapi.cloudapp.net/
 
 **Azure Cosmos DB Capacity Calculator**
 https://cosmos.azure.com/capacitycalculator/
+
+**Azure REST API Browser**
+https://docs.microsoft.com/en-us/rest/api/
