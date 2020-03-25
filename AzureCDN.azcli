@@ -1,0 +1,30 @@
+az cdn --help
+
+az cdn profile create `
+  --name ncstoragecdn `
+  --resource-group nc-storage-rg `
+  --location 'Central US' `
+  --sku Standard_Akamai 
+
+az cdn endpoint create `
+  --name ncstoragecdn `
+  --profile-name ncstoragecdn `
+  --resource-group nc-storage-rg `
+  --location 'Central US' `
+  --origin 'ncstoragecdn.blob.core.windows.net' `
+  --no-http 
+
+  az cdn profile list
+az cdn endpoint list `
+  --profile-name ncstoragecdn `
+  --resource-group nc-storage-rg 
+
+az cdn endpoint update `
+  --name ncstoragecdn `
+  --profile-name ncstoragecdn `
+  --resource-group nc-storage-rg `
+  --origin-host-header 'ncstoragecdn.blob.core.windows.net' 
+
+az cdn profile delete `
+  --name ncstoragecdn `
+  --resource-group nc-storage-rg 
