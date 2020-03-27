@@ -76,3 +76,9 @@ https://cosmos.azure.com/capacitycalculator/
 
 **Azure REST API Browser**
 https://docs.microsoft.com/en-us/rest/api/
+
+**Cognitive Services Text Analytics API**
+https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7
+
+**Service Bus Explorer**
+https://github.com/paolosalvatori/ServiceBusExplorer
