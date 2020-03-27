@@ -82,3 +82,7 @@ https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/oper
 
 **Service Bus Explorer**
 https://github.com/paolosalvatori/ServiceBusExplorer
+
+**Azure Cache for Redis**
+https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/cache-java-get-started
+
