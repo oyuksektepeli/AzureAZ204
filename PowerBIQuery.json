@@ -1,0 +1,21 @@
+SELECT
+	StoreId,
+	CAST(DrinkId as bigint) as DrinkId,
+	CAST(TransactionAmount as float) as SaleAmount,
+	DateTime AS Time
+INTO 
+	PowerBISales
+FROM 
+	sales
+
+SELECT
+    StoreId,
+    DrinkId,
+    sum(TransactionAmount) as Sales,
+    System.TimeStamp AS Time
+INTO 
+    PowerBISalesAgg
+FROM 
+    sales
+GROUP BY 
+    StoreId, DrinkId, HoppingWindow(second, 60, 30)
