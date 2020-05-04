@@ -24,3 +24,6 @@ docker create --name dotnettest1 dotnettest
 
 #run application on container
 dotnet run -it --rm --entrypoint "cmd.exe" dotnettest1
+
+#output
+Hello World!
