@@ -17,7 +17,7 @@ code .
 # ENTRYPOINT ["dotnet", "NetCore.Docker.dll"]
 
 #build Container
-build -t dotnettest -f Dockerfile .
+docker build -t dotnettest -f Dockerfile .
 
 #create container
 docker create --name dotnettest1 dotnettest
