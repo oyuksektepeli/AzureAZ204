@@ -1,0 +1,21 @@
+# App Service create full description 
+az appservice plan create --name ytplan01 --resource-group az204-rg --sku S1
+
+az webapp list-runtimes --subscription "Microsoft Azure Sponsorship - MVP"
+
+az webapp create -g az204-rg -p ytplan01 -n ytapp01 --runtime "DOTNET|5.0" --deployment-local-git
+
+# for existing application pass if you do above with new app
+az webapp deployment source config-local-git --name ytapp02 --resource-group az204-rg
+
+az webapp deployment user set --user-name ytapp02 --password <your-password> --subscription "Microsoft Azure Sponsorship - MVP"
+
+git remote add azure https://ytapp03.scm.azurewebsites.net:443/ytapp03.git
+
+#for changing remote url
+git remote set-url azure https://ytapp02.scm.azurewebsites.net:443/ytapp02.git
+
+#push your local repo to azure
+git push azure master
+
+#enter above credentials when git credential manager pops up
